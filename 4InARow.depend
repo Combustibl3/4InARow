@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1529313725 source:c:\users\florian elten\documents\daten florian\programming\4inarow\src\player.cpp
+	"player.hpp"
+
+1526379832 c:\users\florian elten\documents\daten florian\programming\4inarow\include\player.hpp
+
+1529313725 source:c:\users\florian elten\documents\daten florian\programming\4inarow\main.cpp
+	<iostream>
+	<stdio.h>
+	<windows.h>
+	"player.hpp"
+	"game.hpp"
+
+1529315186 source:c:\users\florian elten\documents\daten florian\programming\4inarow\src\game.cpp
+	"game.hpp"
+
+1529312930 c:\users\florian elten\documents\daten florian\programming\4inarow\include\game.hpp
+	<iostream>
+
