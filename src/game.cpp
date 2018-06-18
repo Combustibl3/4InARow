@@ -12,7 +12,36 @@ game::game(){ // Feld mit 0en befüllen.
 
 game::~game(){}
 
-int game::emptyfield(){
+int game::colToInt(string column){
+    int x;
+
+    if     (column == "1"){x = 0;} // Zur Vermeidung von Fehlern in der Eingabe wird ein string verwendet
+	else if(column == "2"){x = 1;} // und anschließend in integer "gewandelt"
+	else if(column == "3"){x = 2;}
+	else if(column == "4"){x = 3;}
+	else if(column == "5"){x = 4;}
+	else if(column == "6"){x = 5;}
+	else if(column == "7"){x = 6;}
+	else                  {x = ERR;}
+
+	return x;
+}
+
+int game::rowToInt(string row){
+    int x;
+
+    if     (row == "1"){x = 0;} // Zur Vermeidung von Fehlern in der Eingabe wird ein string verwendet
+	else if(row == "2"){x = 1;} // und anschließend in integer "gewandelt"
+	else if(row == "3"){x = 2;}
+	else if(row == "4"){x = 3;}
+	else if(row == "5"){x = 4;}
+	else if(row == "6"){x = 5;}
+	else               {x = ERR;}
+
+	return x;
+}
+
+void game::emptyfield(){
     for (int i = 0; i < 42; i++){
         field[i] = 0;
     }
@@ -49,9 +78,11 @@ int game::createfield() {  //Feld : 7 Breit, 6 Hoch
 	return 0;
 }
 
-int game::check(int playerID, int y, int x) {	//Player entweder 1 oder 2 // RETURN 1 = 4 in Reihe, RETURN 0 = Nicht 4 in Reihe
+int game::check(int playerID, int row, string column) {	//Player entweder 1 oder 2 // RETURN 1 = 4 in Reihe, RETURN 0 = Nicht 4 in Reihe
 	int count = 1;
 	int i = 1;
+	int x = colToInt(column);
+	int y = row;
 
 	if (field[(y * 7) + x] != playerID) {
 		return ERR;
@@ -124,8 +155,9 @@ int game::check(int playerID, int y, int x) {	//Player entweder 1 oder 2 // RETU
 	return 0;
 }
 
-int game::placechip(int playerID, int x) {
+int game::placechip(int playerID, string column) {
 	int y = 0;
+	int x = colToInt(column); //Umwandeln string to int. ERR falls die Spalte nicht existiert
 
 	if ((x > 6) || field[x] != 0) {
 		return ERR;
